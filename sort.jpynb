@@ -1,0 +1,10 @@
+input = [3,5,2,5,3,7,5,323,4,56435,3]
+print(f"len of input = {len(input)}")
+for i in range(0,len(input)):
+    for j in range(0,len(input)-1):
+        print("compare {} with {}".format(input[j],  input[j+1]))
+        if(input[j] > input[j+1]):
+            input[j] ,input[j+1]= input[j+1] , input[j]
+            print(input)
+
+
