@@ -1,3 +1,4 @@
+#bubble
 input = [3,5,2,5,3,7,5,323,4,56435,3]
 print(f"len of input = {len(input)}")
 for i in range(0,len(input)):
@@ -7,7 +8,7 @@ for i in range(0,len(input)):
             input[j] ,input[j+1]= input[j+1] , input[j]
             print(input)
 
-
+#insert
 input = [3,5,2,5,3,7,5,323,4,56435,3]
 n=len(input)
 for j in range(0,n-1):
@@ -44,3 +45,50 @@ for i in range(1,n):
     a[k+1] = key
     j = j + 1
     print(a)
+
+#Select
+a = [3,5,2,5,3,7,5,323,4,56435,3]
+n=len(a)
+for i in range(0,n):
+    s = a[i]
+    k=i
+    for j in range(i,n):
+        if(s > a[j]):
+            s=a[j]
+            k=j
+    a[k]=a[i]
+    a[i]=s
+    print(a)
+
+#MergSort
+a1 = [3,5,2,5,3,7,5,323,4,56435,3]
+
+def merg(a,b):
+    print(f"merg {a},{b}")
+    c=[]
+    i,j=0,0
+    while i<len(a) and j < len(b):
+        if a[i]>b[j]:
+            c.append(b[j])
+            j = j +1
+            if j == len(b):
+                c.extend(a[i:len(a)])
+        else:
+            c.append(a[i])
+            i = i +1
+            if(i == len(a)):
+                c.extend(b[j:len(b)])
+    print(f"merg result: {c}")
+    return c
+
+def merg_sort(a):
+    print(f"merg sort {a}")
+    n=len(a)
+    if(n==0):
+        return []
+    if(n==1):
+        return a
+    else:
+        return merg(merg_sort(a[0:n//2]),merg_sort(a[n//2:n]))
+
+print(merg_sort(a1))
