@@ -1,12 +1,21 @@
 #bubble
 input = [3,5,2,5,3,7,5,323,4,56435,3]
-print(f"len of input = {len(input)}")
-for i in range(0,len(input)):
-    for j in range(0,len(input)-1):
-        print("compare {} with {}".format(input[j],  input[j+1]))
-        if(input[j] > input[j+1]):
-            input[j] ,input[j+1]= input[j+1] , input[j]
-            print(input)
+input2 = [3,4,5,6,7,8, 5643]
+def bubble(a):
+    print(f"len of a = {len(a)}")
+    for i in range(0,len(a)):
+        any_change = False
+        for j in range(0,len(a)-1):
+            print("compare {} with {}".format(a[j],  a[j+1]))
+            if(a[j] > a[j+1]):
+                any_change = True
+                a[j] ,a[j+1]= a[j+1] , a[j]
+                print(a)
+        if(not any_change): break
+    return a
+
+print(bubble(input))
+print(bubble(input2))
 
 #insert
 input = [3,5,2,5,3,7,5,323,4,56435,3]
@@ -92,3 +101,35 @@ def merg_sort(a):
         return merg(merg_sort(a[0:n//2]),merg_sort(a[n//2:n]))
 
 print(merg_sort(a1))
+
+#quick
+
+a1 = [3,5,2,5,3,7,5,323,4,56435,3]
+
+def quick(a) -> [] : 
+    print(f"quick sort: {a}")
+    n = len(a)
+    if(n <2):
+        return a
+    k = n//2
+    pivot = a[k]
+    print(f"pivot [{k}]: {pivot}")
+    b=[]
+    c=[]
+    for i in range(n):
+        if(i==k):continue
+        if(a[i] <= pivot):
+            b.append(a[i])
+        else:
+            c.append(a[i])
+    print(b,c)
+    first = quick(b)
+    print(f"first part =:{first}")
+    first.append(pivot)
+    first.extend(quick(c))
+    print(f"all part =:{first}")
+    return first
+    
+    
+
+print(quick(a1))
