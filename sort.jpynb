@@ -143,3 +143,52 @@ def quick(a) -> [] :
     right = [y for y in a[:n] if y > pivot]
     return quick(left) + [pivot] + quick(right)
 print(quick(a1))
+
+#heapsort
+a = [3,5,2,5,3,7,5,323,4,56435,3]  
+def selectMin(a,i):
+    if( a[i] > a[2*i+1]):
+        t = a[i]
+        a[i] = a[2*i+1]
+        a[2*i+1] = t
+    if( a[i] > a[2*i+2]):
+        t = a[i]
+        a[i] = a[2*i+2]
+        a[2*i+2] = t
+            
+def parent(i):
+    if(i%2 == 1):
+        return i//2
+    else:
+        return i/2 +1
+        
+     
+def heapfy(a,i):
+    print(f"i= {i} {a}")
+    k = len(a) -1
+    if k==1 :
+        if a[0] > a[1]:
+            t = a[0]
+            a[0] = a[1]
+            a[1] = t
+    if(2*i +2 > k):
+        return
+    if( k%2 ==1 and 2*i +1 == k ):
+        if( a[i] > a[k]):
+            t = a[i]
+            a[i] = a[k]
+            a[k] = t
+    elif( k%2 ==0 and 2*i +2 == k ):
+         selectMin(a,i)
+    else:
+        heapfy(a,2*i+1)
+        heapfy(a,2*i+2)
+        selectMin(a,i)
+
+b=[]
+for i in range(0,len(a)):
+    heapfy(a,0)
+    print(a)
+    b.append(a[0])
+    a=a[1:]
+print(b)
