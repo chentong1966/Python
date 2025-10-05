@@ -86,3 +86,40 @@ print("search: ", 30," return: ",dfs(a,0,30), a)
     explored:set = set()
     print("search: ", x," return: ",dfs(a,0,x), a)
 print("search: ", 30," return: ",dfs(a,0,30), a)
+
+#DFS stack
+def dfs(a,v,x):
+    stack = []
+    stack.append(v)
+    while stack :
+        print("stack", stack)
+        u = stack.pop()
+        print("visited", visited)
+        print("visiting", u)
+        visited.add(u)
+        edges = edgesOf(u)
+        for e in edges:
+            m, n = e.split("-")
+            j=int(n)
+            if(int(j) not in visited):
+                if a[j] == x:
+                    return j, a[j]
+                stack.append(j)
+
+def edgesOf(v) -> set:
+    myedges:set=set() 
+    if 2*v+1 < len(a):
+        myedges.add(str(v)+"-"+str(2*v+1))
+    if 2*v+2 < len(a):
+        myedges.add(str(v)+"-"+str(2*v+2))
+    print("edges of", v, myedges)
+    return myedges
+    
+    
+    
+a = [2, 3, 3, 3, 4, 5, 5, 5, 7, 323, 56435,8]
+for x in reversed(a):
+    visited:set = set()
+    explored:set = set()
+    print("search: ", x," return: ",dfs(a,0,x), a,"\n")
+print("search: ", 30," return: ",dfs(a,0,30), a)
