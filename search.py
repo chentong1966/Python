@@ -49,7 +49,7 @@ def dfs(a,v,x):
         return v , a[v]
     visited.add(v)
     for e in edgesOf(v):
-        print("explored",e, "explored", explored)
+        print("exploring",e, "explored", explored)
         if(e not in explored):
             explored.add(e)
             u,w = e.split("-")
