@@ -130,17 +130,26 @@ def quick(a) -> [] :
     
 print(quick(a1))
 
-a1 = [3,5,2,5,3,7,5,323,4,56435,3]
+import random
 def quick(a) -> [] : 
     print(f"quick sort: {a}")
     n = len(a) -1 
     if(n <1):
         return a
-    pivot = a[n-1]
+    pivot = a[n]
     left = [x for x in a[:n] if x <= pivot]
     right = [y for y in a[:n] if y > pivot]
+    print(left, [pivot] , right)
     return quick(left) + [pivot] + quick(right)
-print(quick(a1))
+
+for j in range(10):       
+    a1 = [random.randint(0, 1000) for _ in range(18)]    
+    a2=quick(a1)
+    print(a2)
+    for i in range(len(a1)-1):
+        if a2[i] > a2[i+1]:
+            raise ValueError("sort error",i)
+    print("End",i,"\n")
 
 #quicj in olace
 import random
