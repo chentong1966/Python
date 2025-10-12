@@ -151,7 +151,7 @@ for j in range(10):
             raise ValueError("sort error",i)
     print("End",i,"\n")
 
-#quicj in olace
+#quick in place
 import random
 def quickd(a,l,r):
     print(a[l:r+1],l,r)
@@ -188,6 +188,34 @@ for i in range(10):
     for i in range(len(a1)-1):
         if a1[i] > a1[i+1]:
             raise ValueError("sort error")
+    print("End",i,"\n")
+
+#quick in place
+import random
+def quick(a,l,r) -> [] : 
+    print(f"quick sort: {a[l:r+1]}, l={l},r={r}")
+    if(r <= l):
+        return
+    i=l
+    for j in range(l+1,r+1):
+        print("For each j i=",i,"j=",j,a)
+        if a[j] < a[i]:
+            print("a[j] < a[i] i=",i,"j=",j,a)
+            a[j],a[i+1] = a[i+1],a[j]
+            a[i],a[i+1] = a[i+1],a[i]
+            i +=1
+            print("Ater exchange a[j] < a[i] i=",i,"j=",j,a[l:r+1],)
+    print("Before recursive l=",l, "i=",i,"r=",r,a[l:i],"pivot=",a[i],a[i+1:r+1])
+    quick(a,l,i-1)
+    quick(a,i+1,r)
+
+for j in range(3):       
+    a1 = [random.randint(0, 1000) for _ in range(10)]    
+    quick(a1,0,len(a1)-1)
+    print(a1)
+    for i in range(len(a1)-1):
+        if a1[i] > a1[i+1]:
+            raise ValueError("sort error",i)
     print("End",i,"\n")
 
 #heapsort
