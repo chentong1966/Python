@@ -93,3 +93,31 @@ def solution(finish,scooters):
     return l
 
 print(solution(finish,scooters))
+
+
+# return walking distance
+
+finish=23
+scooters=[7,4,14]
+finish=10
+scooters=[]
+finish=27
+scooters=[15,7,3,10]
+finish=95
+scooters=[15,7,35, 76,3,13]
+
+import heapq
+def solution(finish,scooters):
+    t=0
+    w=0
+    heapq.heapify(scooters)
+    while scooters:
+        d=heapq.heappop(scooters)
+        if t <= d:
+            w = w + d - t
+            t = d + 10
+    if t < finish:
+        w = w + finish - t
+    return w
+
+print(solution(finish,scooters))
