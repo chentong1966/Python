@@ -37,3 +37,59 @@ def solution(finish,scooters):
     return l
 
 print(solution(finish,scooters))
+
+
+# pop from sorted list and check
+
+finish=23
+scooters=[7,4,14]
+finish=10
+scooters=[]
+finish=27
+scooters=[15,7,3,10]
+finish=85
+scooters=[15,7,35, 76,3,10]
+
+def solution(finish,scooters):
+    t=0
+    l=0
+    scooters=sorted(scooters)
+    while scooters:
+        d=scooters.pop(0)
+        if t <= d:
+            if d+10 <= finish:
+                l = l +10
+                t = d + 10
+            else:
+                return l + finish - d
+    return l
+
+print(solution(finish,scooters))
+
+# heapq
+
+finish=23
+scooters=[7,4,14]
+finish=10
+scooters=[]
+finish=27
+scooters=[15,7,3,10]
+finish=85
+scooters=[15,7,35, 76,3,13]
+
+import heapq
+def solution(finish,scooters):
+    t=0
+    l=0
+    heapq.heapify(scooters)
+    while scooters:
+        d=heapq.heappop(scooters)
+        if t <= d:
+            if d+10 <= finish:
+                l = l +10
+                t = d + 10
+            else:
+                return l + finish - d
+    return l
+
+print(solution(finish,scooters))
