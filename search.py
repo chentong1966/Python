@@ -1,4 +1,4 @@
-#BinarySearch
+#BinarySearch not good
 a = [2, 3, 3, 3, 4, 5, 5, 5, 7, 323, 56435]
 def binarySearch(a,x) -> int|None : 
     k=len(a)//2
